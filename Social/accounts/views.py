@@ -20,11 +20,11 @@ def user_login(request):
 
     else:
         form = LoginForm()
-    return render(request,'login.html',{'form':form})
+    return render(request,'accounts/login.html',{'form':form})
     
 @login_required
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'accounts/index.html')
 
 def register(request):
     if request.method == 'POST':
@@ -34,10 +34,10 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             Profile.objects.create(user=new_user)
-            return render(request,'register_done.html')
+            return render(request,'accounts/register_done.html')
     else:
         user_form = UserRegistrationForm()
-    return render(request,'register.html',{'user_form':user_form})
+    return render(request,'accounts/register.html',{'user_form':user_form})
 
 @login_required
 def edit(request):
@@ -50,4 +50,4 @@ def edit(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'edit.html',{'user_from':user_form,'profile_form':profile_form})
+    return render(request, 'accounts/edit.html',{'user_from':user_form,'profile_form':profile_form})
