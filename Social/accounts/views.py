@@ -7,27 +7,32 @@ from .models import Profile
 from posts.models import Posts
 # Create your views here.
 
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = authenticate(request,username=data['username'],password=data['password'])
+            user = authenticate(
+                request, username=data['username'], password=data['password'])
             if user is not None:
-                login(request,user)
+                login(request, user)
                 return HttpResponse('user authenticated and logged in')
             else:
                 return HttpResponse('Invalid credentials')
 
     else:
         form = LoginForm()
-    return render(request,'accounts/login.html',{'form':form})
-    
+    return render(request, 'accounts/login.html', {'form': form})
+
+
 @login_required
 def index(request):
     current_user = request.user
     posts = Posts.objects.filter(user=current_user)
-    return render(request, 'accounts/index.html',{'posts':posts})
+    profile = Profile.objects.filter(user=current_user).first()
+    return render(request, 'accounts/index.html', {'posts': posts, 'profile': profile})
+
 
 def register(request):
     if request.method == 'POST':
@@ -37,20 +42,22 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             Profile.objects.create(user=new_user)
-            return render(request,'accounts/register_done.html')
+            return render(request, 'accounts/register_done.html')
     else:
         user_form = UserRegistrationForm()
-    return render(request,'accounts/register.html',{'user_form':user_form})
+    return render(request, 'accounts/register.html', {'user_form': user_form})
+
 
 @login_required
 def edit(request):
     if request.method == 'POST':
-        user_form = UserEditForm(instance=request.user,data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile,data=request.POST,files=request.FILES)
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(
+            instance=request.user.profile, data=request.POST, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'accounts/edit.html',{'user_from':user_form,'profile_form':profile_form})
+    return render(request, 'accounts/edit.html', {'user_from': user_form, 'profile_form': profile_form})

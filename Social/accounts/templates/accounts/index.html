@@ -1,10 +1,29 @@
 {% extends 'accounts/base.html' %}
 {% block content %}
-<h1>Homepage for accounts app</h1>
-{% for post in posts %}
-    <h1>{{post.title}}</h1>
-    <h2>{{post.user}}</h2>
-    <img src="{{ post.image.url }}" alt="img" >
-{% endfor %}
+
+
+    <div class='flex justify-center mt-5 p-10'>
+        <h2 class='text-3xl font-normal mb-2 text-gray-500'>My Posts</h2>
+    </div>
+    <div class='flex justify-center p-10 '>
+        {% for post in posts %}
+        <!--Card starts here-->
+            <a href="">
+                
+                <div class='rounded overflow-hidden w-[470] h-[470] bg-white shadow-2xl'>
+                    <div class='user-container flex mx-5 my-5'>
+                        <img class='h-10 w-10 rounded-full' src="{{profile.photo.url}}" alt="">
+                        <div class='mx-2 my-2 font-bold'><span class='text-gray-500'>{{post.user}}</span></div>
+                    </div>
+                    <img src="{{post.image.url}}" alt="img" >
+                </div>
+            </a>
+        <!--Card ends here-->
+        {% endfor %}
+    </div>
+
 {% endblock  %}
 
+
+
+    
