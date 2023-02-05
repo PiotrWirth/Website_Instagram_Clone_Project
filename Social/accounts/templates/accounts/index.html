@@ -1,4 +1,5 @@
 {% extends 'accounts/base.html' %}
+{% load static %}
 {% block content %}
 
 
@@ -16,6 +17,17 @@
                         <div class='mx-2 my-2 font-bold'><span class='text-gray-500'>{{post.user}}</span></div>
                     </div>
                     <img src="{{post.image.url}}" alt="img" >
+                    <div class='px-6 py-6'>
+                        <div class='icon-container flex gap-3'>
+                            <img class='w-10 h-10' src="{% static 'accounts/images/like.png' %}" alt="">
+                            <img class='w-10 h-10' src="{% static 'accounts/images/comment.png' %}" alt="">
+                            <img class='w-10 h-10' src="{% static 'accounts/images/share.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class='px-6 py-6'>
+                        <div class='fony-bold text-xl mb-2'>{{post.title}}</div>
+                        <p class='text-gray-700 text-base'>{{post.caption}}</p>
+                    </div>
                 </div>
             </a>
         <!--Card ends here-->
