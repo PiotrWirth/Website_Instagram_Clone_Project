@@ -6,17 +6,17 @@
     <div class='flex justify-center mt-5 p-10'>
         <h2 class='text-3xl font-normal mb-2 text-gray-500'>My Posts</h2>
     </div>
-    <div class='flex justify-center p-10 '>
+    <div class='grid p-10 mx-60 grid-cols-1'>
         {% for post in posts %}
         <!--Card starts here-->
-            <a href="">
-                
-                <div class='rounded overflow-hidden w-[470px] h-[470px] bg-white shadow-2xl'>
-                    <div class='user-container flex mx-5 my-5'>
-                        <img class='h-10 w-10 rounded-full' src="{{profile.photo.url}}" alt="img">
+            <a href="#">
+                <div class='flex justify-center'>
+                <div class='rounded overflow-hidden w-[470px] h-[470px] bg-white shadow-2xl mb-4'>
+                    <div class='user-container flex  mx-5 my-5 '>
+                        <img class='h-10 w-10 rounded-full' src="{{post.user.profile.photo.url}}" alt="img">
                         <div class='mx-2 my-2 font-bold'><span class='text-gray-500'>{{post.user}}</span></div>
                     </div>
-                    <img src="{{post.image.url}}" alt="img" >
+                    <img  src="{{post.image.url}}" alt="img" >
                     <div class='px-6 py-6'>
                         <div class='icon-container flex gap-3'>
                             <img class='w-10 h-10' src="{% static 'accounts/images/like.png' %}" alt="">
@@ -29,13 +29,10 @@
                         <p class='text-gray-700 text-base'>{{post.caption}}</p>
                     </div>
                 </div>
+                </div>
             </a>
         <!--Card ends here-->
         {% endfor %}
     </div>
 
 {% endblock  %}
-
-
-
-    
