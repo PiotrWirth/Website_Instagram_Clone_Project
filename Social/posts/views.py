@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostCreateForm
 from django.contrib.auth.decorators import login_required
 from .models import Posts
-from django.shortcuts import get_object_or_404
 # Create your views here.
 
 @login_required
@@ -28,3 +27,4 @@ def liked_post(request):
         post.liked_by.remove(request.user)
     else:
         post.liked_by.add(request.user)
+    return redirect('feed')
