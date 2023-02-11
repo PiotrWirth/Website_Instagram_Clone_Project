@@ -1,4 +1,5 @@
 {% extends 'accounts/base.html' %}
+{% load mathfilters %}
 {% load static %}
 {% block content %}
 
@@ -29,6 +30,14 @@
                             <img class='w-10 h-10' src="{% static 'accounts/images/comment.png' %}" alt="">
                             <img class='w-10 h-10' src="{% static 'accounts/images/share.png' %}" alt="">
                         </div>
+                    </div>
+                    <div class='px-6'>
+                        {% if post.liked_by.count < 1 %}
+                        {% elif post.liked_by.count == 1 %}
+                        {{ post.liked_by.first }} likes this
+                        {% elif post.liked_by.count > 1 %}
+                        {{ post.liked_by.first }} & {{post.liked_by.count|sub:1 }} other likes this
+                        {% endif %}
                     </div>
                     <div class='px-6 py-6'>
                         <div class='fony-bold text-xl mb-2'>{{post.title}}</div>
