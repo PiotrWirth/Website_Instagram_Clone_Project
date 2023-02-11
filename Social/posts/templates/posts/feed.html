@@ -20,7 +20,11 @@
                     <div class='px-6 py-6'>
                         <div class='icon-container flex gap-3'>
                             <a id='{{ post.id }}' class='btn-like'>
+                                {% if logged_user in post.liked_by.all %}
+                                <img class='w-10 h-10' src="{% static 'accounts/images/redlike.png' %}" alt="">
+                                {% else %}
                                 <img class='w-10 h-10' src="{% static 'accounts/images/like.png' %}" alt="">
+                                {% endif %}
                             </a>
                             <img class='w-10 h-10' src="{% static 'accounts/images/comment.png' %}" alt="">
                             <img class='w-10 h-10' src="{% static 'accounts/images/share.png' %}" alt="">
@@ -46,6 +50,7 @@
                 url:'/posts/like',
                 data:{post_id:post_id,csrfmiddlewaretoken:window.CSRF_TOKEN}
             });
+            window.location.href="http://127.0.0.1:8000/posts/feed"
         })
     </script>
 {% endblock  %}
