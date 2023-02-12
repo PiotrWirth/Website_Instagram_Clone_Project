@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostCreateForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from .models import Posts
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -25,6 +26,7 @@ def feed(request):
         post = get_object_or_404(Posts,id=post_id)
         new_comment.post = post
         new_comment.save()
+        return HttpResponseRedirect('/posts/feed')
     else:
         comment_form = CommentForm()
 
