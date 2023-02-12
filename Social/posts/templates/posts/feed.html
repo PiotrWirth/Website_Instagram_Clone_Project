@@ -36,7 +36,7 @@
                         {% elif post.liked_by.count == 1 %}
                         {{ post.liked_by.first }} likes this
                         {% elif post.liked_by.count > 1 %}
-                        {{ post.liked_by.first }} & {{post.liked_by.count|sub:1 }} other likes this
+                        {{ post.liked_by.first }} & {{post.liked_by.count|sub:1 }} other person likes this
                         {% endif %}
                     </div>
                     <div class='px-6 py-6'>
