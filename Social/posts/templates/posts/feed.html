@@ -52,7 +52,18 @@
                     <div class='px-5 py-5'>
                         <form method='POST'>
                             {% csrf_token %}
-                            
+                            <div>
+                                <label for="">Add comment</label>
+                            </div>
+                            <div>
+                                {{ comment_form.body }}
+                            </div>
+                            <div>
+                                <input type='hidden' name='post_id' id='post_id' value='{{ post.id }}'>
+                            </div>
+                            <div>
+                                <button type='submit'>Add</button>
+                            </div>
                         </form>
                     </div>
                 </div>
