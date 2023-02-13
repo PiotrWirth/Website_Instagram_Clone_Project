@@ -1,4 +1,4 @@
-{% extends 'accounts/base.html' %}
+{% extends 'base.html' %}
 {% load mathfilters %}
 {% load static %}
 {% block content %}
@@ -62,7 +62,7 @@
                                 <input type='hidden' name='post_id' id='post_id' value='{{ post.id }}'>
                                 <input type='hidden' name='posted_by' id='posted_by' value='{{ logged_user }}'>
                             </div>
-                            <button class=' m-5 bg-green-500 text-white px-5 py-2 type='submit'>Add</button>
+                            <button class=' m-5 bg-green-500 text-white px-5 py-2' type='submit'>Add</button>
                         </form>
                     </div>
                 </div>
