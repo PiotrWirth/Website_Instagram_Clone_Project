@@ -6,12 +6,12 @@
     <div class='flex justify-center mt-5 p-10'>
         <h2 class='text-3xl font-normal mb-2 text-gray-500'>My Posts</h2>
     </div>
-    <div class='flex justify-center p-10 '>
+    <div class='grid p-10 mx-60 grid-cols-1 '>
         {% for post in posts %}
         <!--Card starts here-->
             <a href="">
-                
-                <div class='rounded overflow-hidden w-[470px] h-[470px] bg-white shadow-2xl'>
+                <div class='flex justify-center'>
+                <div class='rounded overflow-hidden bg-white shadow-2xl object-contain h-auto w-1/3'>
                     <div class='user-container flex mx-5 my-5'>
                         <img class='h-10 w-10 rounded-full' src="{{profile.photo.url}}" alt="img">
                         <div class='mx-2 my-2 font-bold'><span class='text-gray-500'>{{post.user}}</span></div>
@@ -28,6 +28,7 @@
                         <div class='fony-bold text-xl mb-2'>{{post.title}}</div>
                         <p class='text-gray-700 text-base'>{{post.caption}}</p>
                     </div>
+                </div>
                 </div>
             </a>
         <!--Card ends here-->

@@ -17,9 +17,9 @@ def user_login(request):
                 request, username=data['username'], password=data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('index')
+                return redirect('accounts:index')
             else:
-                return redirect('login')
+                return redirect('accounts:login')
 
     else:
         form = LoginForm()
