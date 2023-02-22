@@ -7,6 +7,14 @@ The user is able to create an account by registering, and then after logging in,
 A logged-in user can also comment and respond to other users' posts. All the functionality is enabled after the user logs in. 
 Only the feed, login and registering page is available for every user.
 
+Front-end technologies used in the project:
+- HTML
+- JS
+- CSS
+
+Back-end technologies used in the project:
+- Python
+
 The main functions include:
 
 - 'Feed' page with all the posts created by users
