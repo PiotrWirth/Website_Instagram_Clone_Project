@@ -3,9 +3,13 @@ To properly use this project you have to change the path for python in pyvenv.cf
 
 This is a Django 4.1.4 instagram clone project.
 
+# About
+
 The user is able to create an account by registering, and then after logging in, create posts with photos and description.  
 A logged-in user can also comment and respond to other users' posts. All the functionality is enabled after the user logs in. 
 Only the feed, login and registering page is available for every user.
+
+# Technologies
 
 Front-end technologies used in the project:
 - HTML
@@ -14,8 +18,9 @@ Front-end technologies used in the project:
 
 Back-end technologies used in the project:
 - Python
+- Django
 
-The main functions include:
+# Main functions
 
 - 'Feed' page with all the posts created by users
 - Creating posts with titles, captions and images
